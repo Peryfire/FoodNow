@@ -12,6 +12,11 @@
             Title="Home"
             ContentTemplate="{DataTemplate view:HomePage}" />
         </Tab>
+        <Tab Title="Shop" Icon="shop_icon.png">
+            <ShellContent
+            Title="Shop"
+            ContentTemplate="{DataTemplate view:ShopPage}" />
+        </Tab>
         <Tab Title="Settings" Icon="settings_icon.png">
             <ShellContent
             Title="Settings"
