@@ -1,5 +1,6 @@
 ﻿using SQLite;
 using FoodNow.Model;
+using System.Collections.ObjectModel;
 
 namespace FoodNow.Data
 {
@@ -16,14 +17,16 @@ namespace FoodNow.Data
             if (Database is not null)
                 return;
             string path = @"foodnow.db3";
-            //Database = new SQLiteAsyncConnection(Constants.DatabasePath, Constants.Flags);
-            Database = new SQLiteAsyncConnection(path, Constants.Flags);
+            Database = new SQLiteAsyncConnection(Path.Combine(FileSystem.AppDataDirectory, Constants.DatabaseFilename), Constants.Flags);
+            //Database = new SQLiteAsyncConnection(path, Constants.Flags);
             var result = await Database.CreateTableAsync<Food>();
+            await Database.InsertAsync(new Food() { Nome = "A" });
+            await Database.InsertAsync(new Food() { Nome = "B" });
         }
-        public async Task<List<Food>> GetItemsAsync()
+        public async Task<ObservableCollection<Food>> GetItemsAsync()
         {
             await Init();
-            return await Database.Table<Food>().ToListAsync();
+            return new ObservableCollection<Food>(await Database.Table<Food>().ToListAsync());
         }
 
         //public async Task<List<Food>> GetItemsNomeAsync()
@@ -48,6 +51,7 @@ namespace FoodNow.Data
             //if (item.Nome != "")
             //    return await Database.UpdateAsync(item);
             //else
+
             return await Database.InsertAsync(item);
         }
 

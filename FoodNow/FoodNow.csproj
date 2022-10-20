@@ -32,7 +32,7 @@
 
 	<ItemGroup>
 		<!-- App Icon -->
-		<MauiIcon Include="Resources\AppIcon\appicon.svg" BaseSize="64,64"/>
+		<MauiIcon Include="Resources\AppIcon\appicon.svg" BaseSize="64,64" />
 
 		<!-- Splash Screen -->
 		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#1b5e20" Resize="false" BaseSize="128,128" />
@@ -46,6 +46,10 @@
 
 		<!-- Raw Assets (also remove the "Resources\Raw" prefix) -->
 		<MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiAsset Include="foodnow.db3" />
 	</ItemGroup>
 
 	<ItemGroup>

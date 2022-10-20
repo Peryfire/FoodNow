@@ -4,6 +4,7 @@
              x:Class="FoodNow.View.ShopPage"
              xmlns:model="clr-namespace:FoodNow.Model"
              xmlns:viewmodel="clr-namespace:FoodNow.ViewModel"
+             x:DataType="viewmodel:ShopPageViewModel"
              Title="{Binding Title}">
 
     <StackLayout>
@@ -17,19 +18,19 @@
                 ItemsSource="{Binding Food}"
                 SelectionMode="None">
                 <CollectionView.ItemTemplate>
-                    <DataTemplate x:DataType="viewmodel:ShopPageViewModel">
+                    <DataTemplate x:DataType="model:Food">
                         <Grid Padding="10">
                             <Frame HeightRequest="125" Style="{StaticResource CardView}">
                                 <Grid Padding="0" ColumnDefinitions="125,*">
-                                    <Image Aspect="AspectFill" Source="{Binding Food}"
+                                    <Image Aspect="AspectFill" Source="{Binding Immagine}"
                                            WidthRequest="125"
                                            HeightRequest="125"/>
                                     <VerticalStackLayout
                                         VerticalOptions="Center"
                                         Grid.Column="1"
                                         Padding="10">
-                                        <Label Style="{StaticResource LargeLabel}" Text="{Binding Food}" />
-                                        <Label Style="{StaticResource MediumLabel}" Text="{Binding Food}" />
+                                        <Label Style="{StaticResource LargeLabel}" Text="{Binding Nome}" />
+                                        <Label Style="{StaticResource MediumLabel}" Text="{Binding Descrizione}" />
                                     </VerticalStackLayout>
                                 </Grid>
                             </Frame>

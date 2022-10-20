@@ -26,24 +26,26 @@
             </CollectionView.ItemTemplate>
         </CollectionView>
     </StackLayout>-->
-    <StackLayout Margin="20">
-        <Image Source="{Binding Immagine}"/>
-        <Border Stroke="{StaticResource Secondary}"
-                StrokeThickness="4"
-                Background="{StaticResource Primary}"
-                Padding="16,10"
-                Margin="20"
-                HorizontalOptions="Center">
+    <ScrollView>
+        <StackLayout Margin="20">
+            <Image Source="{Binding Immagine}"/>
+            <Border Stroke="{StaticResource Secondary}"
+                    StrokeThickness="4"
+                    Background="{StaticResource Primary}"
+                    Padding="16,10"
+                    Margin="20"
+                    HorizontalOptions="Center">
 
-            <Border.StrokeShape>
-                <RoundRectangle CornerRadius="20,20,20,20" />
-            </Border.StrokeShape>
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="20,20,20,20" />
+                </Border.StrokeShape>
 
-            <Label Text="{Binding Text}"
-                    TextColor="White"
-                    FontSize="18"
-                    FontAttributes="Bold" />
-        </Border>
-    </StackLayout>
+                <Label Text="{Binding Text}"
+                        TextColor="White"
+                        FontSize="18"
+                        FontAttributes="Bold" />
+            </Border>
+        </StackLayout>
+    </ScrollView>
 
 </ContentPage>
