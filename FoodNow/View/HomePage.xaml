@@ -2,13 +2,22 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="FoodNow.View.HomePage"
+             xmlns:viewmodel="clr-namespace:FoodNow.ViewModel"
              Title="{Binding Title}">
 
-    <StackLayout Margin="50">
+    <!--<StackLayout Margin="50">
         <CollectionView ItemsSource="{Binding SweetsList}">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <StackLayout BackgroundColor="Pink" Orientation="Horizontal" HeightRequest="50">
+                        -->
+    <!--<MultiBinding StringFormat="{}{0} {1} {2} {3}">
+                            <Binding Path="Nome"/>
+                            <Binding Path="Descrizione"/>
+                            <Binding Path="Prezzo"/>
+                            <Binding Path="Quantità"/>
+                        </MultiBinding>-->
+    <!--
                         <Label Text="{Binding Nome}"/>
                         <Label Text="{Binding Descrizione}"/>
                         <Label Text="{Binding Prezzo}"/>
@@ -16,5 +25,25 @@
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
+    </StackLayout>-->
+    <StackLayout Margin="20">
+        <Image Source="{Binding Immagine}"/>
+        <Border Stroke="{StaticResource Secondary}"
+                StrokeThickness="4"
+                Background="{StaticResource Primary}"
+                Padding="16,10"
+                Margin="20"
+                HorizontalOptions="Center">
+
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="20,20,20,20" />
+            </Border.StrokeShape>
+
+            <Label Text="{Binding Text}"
+                    TextColor="White"
+                    FontSize="18"
+                    FontAttributes="Bold" />
+        </Border>
     </StackLayout>
+
 </ContentPage>

@@ -5,28 +5,42 @@ namespace FoodNow.ViewModel
 
     public class HomePageViewModel
     {
-        private List<Sweet> sweetList = new List<Sweet>();
+        private List<Food> foodList = new List<Food>();
 
         string _title;
+        string _text;
+        string _immagine;
 
         public HomePageViewModel()
         {
             Title = "Home";
-            sweetList.Add(new Sweet("Torta", "Torta molto buona", 5.5));
-            sweetList.Add(new Sweet("Caramella", "Caramella molto buona", 0.5));
-            sweetList.Add(new Sweet("Gelato", "Gelato molto buono", 2.5));
+            Text = "Benvenuti su FoodNow";
+            Immagine = "negozio.jpg";
+            //foodList.Add(new Food("Mela", "Melinda", "frutta", 2.50));
+            //foodList.Add(new Food("Anguria", "proveniente dalla Sicilia", "frutta",  12.5));
+            //foodList.Add(new Food("Lasagna",  "buonissime", "cotto", 15.0));
         }
 
-        public List<Sweet> SweetsList
+        public List<Food> FoodsList
         {
-            get { return sweetList; }
-            set { sweetList = value; }
+            get { return foodList; }
+            set { foodList = value; }
         }
 
         public string Title
         {
             get { return _title; }
             set { _title = value; }
+        }
+        public string Text
+        {
+            get { return _text; }
+            set { _text = value; }
+        }
+        public string Immagine
+        {
+            get { return _immagine; }
+            set { _immagine = value; }
         }
     }
 }

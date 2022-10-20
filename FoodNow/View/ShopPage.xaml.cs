@@ -8,5 +8,5 @@ public partial class ShopPage : ContentPage
 	{
 		InitializeComponent();
 		BindingContext = new ShopPageViewModel();
-	}
+    }
 }
