@@ -19,6 +19,7 @@ namespace FoodNow.ViewModel
         {
             Title = "Shop";
             _database = new TodoItemDatabase();
+            DeleteTable();
             GetItems();
             //SaveItems();
             //ComNuovo = new Command(
@@ -26,16 +27,21 @@ namespace FoodNow.ViewModel
             //    {
             //        this.SaveItems();
             //    });
-            ComGet = new Command(
+            ComUp = new Command(
                 execute: () =>
                 {
+                    //this.DeleteTable();
                     this.GetItems();
                 });
         }
 
         //public ICommand ComNuovo { get; private set; }
-        public ICommand ComGet { get; private set; }
-
+        public ICommand ComUp { get; private set; }
+        public void DeleteTable()
+        {
+            _database.DeleteTableAsync();
+            //System.Diagnostics.Debug.Print("OKO");
+        }
         async void GetItems()
         {
             Food = await _database.GetItemsAsync();
@@ -56,7 +62,7 @@ namespace FoodNow.ViewModel
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Food"));
             }
         }
-        
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         //async void SaveItems()

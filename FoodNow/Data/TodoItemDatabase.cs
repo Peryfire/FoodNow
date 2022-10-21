@@ -1,7 +1,6 @@
 ﻿using SQLite;
 using FoodNow.Model;
 using System.Collections.ObjectModel;
-using Android.OS;
 
 namespace FoodNow.Data
 {
@@ -27,6 +26,8 @@ namespace FoodNow.Data
                 await Database.InsertAsync(new Food() { Nome = "Lasagna", Descrizione = "Al ragù", Tipo = "Pasta", Immagine = "lasagna.png", Prezzo = 8.0 });
                 await Database.InsertAsync(new Food() { Nome = "Anguria", Descrizione = "Anguria della Sicilia", Tipo = "Frutto", Immagine = "anguria.png", Prezzo = 12.0 });
                 await Database.InsertAsync(new Food() { Nome = "Roastbeef", Descrizione = "Roastbeef di vitello", Tipo = "Carne", Immagine = "roastbeef.png", Prezzo = 10.0 });
+                await Database.InsertAsync(new Food() { Nome = "Patatine", Descrizione = "Patatine cotte al forno", Tipo = "Contorno", Immagine = "patatine.png", Prezzo = 2.5 });
+                await Database.InsertAsync(new Food() { Nome = "Patatine", Descrizione = "Patatine cotte al forno", Tipo = "Contorno", Immagine = "patatine.png", Prezzo = 2.5 });
             }
 
             //var stream = await FileSystem.OpenAppPackageFileAsync(Path.Combine(FileSystem.AppDataDirectory, Constants.DatabaseFilename));
@@ -38,6 +39,18 @@ namespace FoodNow.Data
         {
             await Init();
             return new ObservableCollection<Food>(await Database.Table<Food>().ToListAsync());
+        }
+
+        public void DeleteTableAsync()
+        {
+            //if (Database is null)
+            //    Database = new SQLiteAsyncConnection(Path.Combine(FileSystem.AppDataDirectory, Constants.DatabaseFilename), Constants.Flags);
+            //await Database.DropTableAsync<Food>();
+
+            if (File.Exists(Path.Combine(FileSystem.AppDataDirectory, Constants.DatabaseFilename)))
+                File.Delete(Path.Combine(FileSystem.AppDataDirectory, Constants.DatabaseFilename));
+            //Database = null;
+            return;
         }
 
         //public async Task<List<Food>> GetItemsNomeAsync()
