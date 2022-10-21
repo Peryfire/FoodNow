@@ -6,46 +6,47 @@
              xmlns:viewmodel="clr-namespace:FoodNow.ViewModel"
              x:DataType="viewmodel:ShopPageViewModel"
              Title="{Binding Title}">
-
-    <StackLayout>
-        <Grid
+    <ScrollView>
+        <StackLayout>
+            <Grid
             ColumnDefinitions="*,*"
             ColumnSpacing="5"
             RowDefinitions="*,Auto"
             RowSpacing="0">
-            <CollectionView
+                <CollectionView
                 Grid.ColumnSpan="2"
                 ItemsSource="{Binding Food}"
                 SelectionMode="None">
-                <CollectionView.ItemTemplate>
-                    <DataTemplate x:DataType="model:Food">
-                        <Grid Padding="10">
-                            <Frame HeightRequest="125" Style="{StaticResource CardView}">
-                                <Grid Padding="0" ColumnDefinitions="125,*">
-                                    <Image Aspect="AspectFill" Source="{Binding Immagine}"
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="model:Food">
+                            <Grid Padding="10">
+                                <Frame HeightRequest="125">
+                                    <Grid Padding="0" ColumnDefinitions="125,*">
+                                        <Image Aspect="AspectFill" Source="{Binding Immagine}"
                                            WidthRequest="125"
                                            HeightRequest="125"/>
-                                    <VerticalStackLayout
+                                        <VerticalStackLayout
                                         VerticalOptions="Center"
                                         Grid.Column="1"
                                         Padding="10">
-                                        <Label Style="{StaticResource LargeLabel}" Text="{Binding Nome}" />
-                                        <Label Style="{StaticResource MediumLabel}" Text="{Binding Descrizione}" />
-                                    </VerticalStackLayout>
-                                </Grid>
-                            </Frame>
-                        </Grid>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
-        </Grid>
-        <Button
-            Text="Nuovo"
-            Command="{Binding ComNuovo}"
-            VerticalOptions="End"/>
-        <Button
-            Text="Get"
-            Command="{Binding ComGet}"
-            VerticalOptions="End"/>
-    </StackLayout>
+                                            <Label Text="{Binding Nome}" />
+                                            <Label Text="{Binding Descrizione}" />
+                                        </VerticalStackLayout>
+                                    </Grid>
+                                </Frame>
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </Grid>
+            <!--<Button
+                Text="Nuovo"
+                Command="{Binding ComNuovo}"
+                VerticalOptions="End"/>-->
+            <Button
+                Text="Get"
+                Command="{Binding ComGet}"
+                VerticalOptions="End"/>
+        </StackLayout>
+    </ScrollView>
 </ContentPage>

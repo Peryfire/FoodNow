@@ -21,39 +21,32 @@ namespace FoodNow.ViewModel
             _database = new TodoItemDatabase();
             GetItems();
             //SaveItems();
-            ComNuovo = new Command(
-                execute: () =>
-                {
-                    this.SaveItems();
-                });
+            //ComNuovo = new Command(
+            //    execute: () =>
+            //    {
+            //        this.SaveItems();
+            //    });
             ComGet = new Command(
                 execute: () =>
                 {
                     this.GetItems();
                 });
         }
+
+        //public ICommand ComNuovo { get; private set; }
+        public ICommand ComGet { get; private set; }
+
         async void GetItems()
         {
             Food = await _database.GetItemsAsync();
-            System.Diagnostics.Debug.Print("OKO");
+            //System.Diagnostics.Debug.Print("OKO");
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        async void SaveItems()
-        {
-            int i = await _database.SaveItemAsync(new Food() { Descrizione = "test desc", Immagine = "a.png", Nome = "prova", Prezzo = 29.99, Tipo = "frutto" });
-        }
         public string Title
         {
             get { return _title; }
             set { _title = value; }
         }
-        //public Food Item
-        //{
-        //    get { return item; }
-        //    set { item = value; }
-        //}
         public ObservableCollection<Food> Food
         {
             get { return _food; }
@@ -63,12 +56,23 @@ namespace FoodNow.ViewModel
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Food"));
             }
         }
+        
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        //async void SaveItems()
+        //{
+        //    int i = await _database.SaveItemAsync(new Food() { Descrizione = "test desc", Immagine = "a.png", Nome = "prova", Prezzo = 29.99, Tipo = "frutto" });
+        //}
+
+        //public Food Item
+        //{
+        //    get { return item; }
+        //    set { item = value; }
+        //}
 
         //public List<Food> QueryAccountWithPositiveBalance()
         //{
         //    return _database.Query<Food>("SELECT * FROM Prodotti");
         //}
-        public ICommand ComNuovo { get; private set; }
-        public ICommand ComGet { get; private set; }
     }
 }

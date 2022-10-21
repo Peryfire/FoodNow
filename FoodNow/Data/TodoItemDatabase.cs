@@ -1,6 +1,7 @@
 ﻿using SQLite;
 using FoodNow.Model;
 using System.Collections.ObjectModel;
+using Android.OS;
 
 namespace FoodNow.Data
 {
@@ -14,14 +15,24 @@ namespace FoodNow.Data
 
         async Task Init()
         {
-            if (Database is not null)
-                return;
-            string path = @"foodnow.db3";
-            Database = new SQLiteAsyncConnection(Path.Combine(FileSystem.AppDataDirectory, Constants.DatabaseFilename), Constants.Flags);
+            //controlla se ha eseguito la connessione con il database
+            if (Database is null)
+                Database = new SQLiteAsyncConnection(Path.Combine(FileSystem.AppDataDirectory, Constants.DatabaseFilename), Constants.Flags);
+            //controlla se il database esiste
+            if (!File.Exists(Path.Combine(FileSystem.AppDataDirectory, Constants.DatabaseFilename)))
+            {
+                await Database.CreateTableAsync<Food>();
+                await Database.InsertAsync(new Food() { Nome = "Mela", Descrizione = "Mela rossa del Trentino", Tipo = "Frutto", Immagine = "mela.png", Prezzo = 0.4 });
+                await Database.InsertAsync(new Food() { Nome = "Pera", Descrizione = "Pera del Piemonte", Tipo = "Frutto", Immagine = "pera.png", Prezzo = 0.2 });
+                await Database.InsertAsync(new Food() { Nome = "Lasagna", Descrizione = "Al ragù", Tipo = "Pasta", Immagine = "lasagna.png", Prezzo = 8.0 });
+                await Database.InsertAsync(new Food() { Nome = "Anguria", Descrizione = "Anguria della Sicilia", Tipo = "Frutto", Immagine = "anguria.png", Prezzo = 12.0 });
+                await Database.InsertAsync(new Food() { Nome = "Roastbeef", Descrizione = "Roastbeef di vitello", Tipo = "Carne", Immagine = "roastbeef.png", Prezzo = 10.0 });
+            }
+
+            //var stream = await FileSystem.OpenAppPackageFileAsync(Path.Combine(FileSystem.AppDataDirectory, Constants.DatabaseFilename));
+            //System.Diagnostics.Debug.Print(Convert.ToString(File.Exists(Path.Combine(FileSystem.AppDataDirectory, Constants.DatabaseFilename))));
+            //string path = @"foodnow.db3";
             //Database = new SQLiteAsyncConnection(path, Constants.Flags);
-            var result = await Database.CreateTableAsync<Food>();
-            await Database.InsertAsync(new Food() { Nome = "A" });
-            await Database.InsertAsync(new Food() { Nome = "B" });
         }
         public async Task<ObservableCollection<Food>> GetItemsAsync()
         {
