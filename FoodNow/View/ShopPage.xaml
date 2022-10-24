@@ -6,17 +6,17 @@
              xmlns:viewmodel="clr-namespace:FoodNow.ViewModel"
              x:DataType="viewmodel:ShopPageViewModel"
              Title="{Binding Title}">
+
     <ScrollView>
         <StackLayout>
-            <Grid
-            ColumnDefinitions="*,*"
-            ColumnSpacing="5"
-            RowDefinitions="*,Auto"
-            RowSpacing="0">
+            <Grid ColumnDefinitions="*,*"
+                      ColumnSpacing="5"
+                      RowDefinitions="*,Auto"
+                      RowSpacing="0">
                 <CollectionView
-                Grid.ColumnSpan="2"
-                ItemsSource="{Binding Food}"
-                SelectionMode="None">
+                            Grid.ColumnSpan="2"
+                            ItemsSource="{Binding Food}"
+                            SelectionMode="None">
                     <CollectionView.ItemTemplate>
                         <DataTemplate x:DataType="model:Food">
                             <Grid Padding="5">
@@ -49,4 +49,5 @@
                 VerticalOptions="End"/>
         </StackLayout>
     </ScrollView>
+
 </ContentPage>

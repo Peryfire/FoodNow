@@ -12,9 +12,8 @@ namespace FoodNow.ViewModel
     public class ShopPageViewModel : INotifyPropertyChanged
     {
         string _title;
-        TodoItemDatabase _database;
-        //Food item;
         public ObservableCollection<Food> _food;
+        TodoItemDatabase _database;
         public ShopPageViewModel()
         {
             Title = "Shop";
@@ -51,7 +50,11 @@ namespace FoodNow.ViewModel
         public string Title
         {
             get { return _title; }
-            set { _title = value; }
+            set
+            {
+                _title = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Title"));
+            }
         }
         public ObservableCollection<Food> Food
         {
