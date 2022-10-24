@@ -23,11 +23,14 @@ namespace FoodNow.Data
                 await Database.CreateTableAsync<Food>();
                 await Database.InsertAsync(new Food() { Nome = "Mela", Descrizione = "Mela rossa del Trentino", Tipo = "Frutto", Immagine = "mela.png", Prezzo = 0.4 });
                 await Database.InsertAsync(new Food() { Nome = "Pera", Descrizione = "Pera del Piemonte", Tipo = "Frutto", Immagine = "pera.png", Prezzo = 0.2 });
+                await Database.InsertAsync(new Food() { Nome = "Pesca", Descrizione = "Pesca senza pelo", Tipo = "Frutto", Immagine = "pesca.png", Prezzo = 0.3 });
                 await Database.InsertAsync(new Food() { Nome = "Lasagna", Descrizione = "Al ragù", Tipo = "Pasta", Immagine = "lasagna.png", Prezzo = 8.0 });
+                await Database.InsertAsync(new Food() { Nome = "Pasta", Descrizione = "Pasta al ragù", Tipo = "Pasta", Immagine = "pasta.png", Prezzo = 6.0 });
+                await Database.InsertAsync(new Food() { Nome = "Pizza", Descrizione = "Pizza margherita", Tipo = "Pasta", Immagine = "pizza.png", Prezzo = 6.5 });
                 await Database.InsertAsync(new Food() { Nome = "Anguria", Descrizione = "Anguria della Sicilia", Tipo = "Frutto", Immagine = "anguria.png", Prezzo = 12.0 });
                 await Database.InsertAsync(new Food() { Nome = "Roastbeef", Descrizione = "Roastbeef di vitello", Tipo = "Carne", Immagine = "roastbeef.png", Prezzo = 10.0 });
                 await Database.InsertAsync(new Food() { Nome = "Patatine", Descrizione = "Patatine cotte al forno", Tipo = "Contorno", Immagine = "patatine.png", Prezzo = 2.5 });
-                await Database.InsertAsync(new Food() { Nome = "Patatine", Descrizione = "Patatine cotte al forno", Tipo = "Contorno", Immagine = "patatine.png", Prezzo = 2.5 });
+                await Database.InsertAsync(new Food() { Nome = "Torta", Descrizione = "Torta di mele", Tipo = "Dolce", Immagine = "torta.png", Prezzo = 12.0 });
             }
 
             //var stream = await FileSystem.OpenAppPackageFileAsync(Path.Combine(FileSystem.AppDataDirectory, Constants.DatabaseFilename));
