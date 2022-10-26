@@ -4,7 +4,8 @@ namespace FoodNow.View;
 
 public partial class ShopPage : ContentPage
 {
-	public ShopPage()
+    [Obsolete]
+    public ShopPage()
 	{
 		InitializeComponent();
 		BindingContext = new ShopPageViewModel();

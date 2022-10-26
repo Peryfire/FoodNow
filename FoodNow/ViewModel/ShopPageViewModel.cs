@@ -1,5 +1,6 @@
 ﻿using FoodNow.Data;
 using FoodNow.Model;
+using FoodNow.View;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.ComponentModel;
@@ -14,33 +15,50 @@ namespace FoodNow.ViewModel
         string _title;
         public ObservableCollection<Food> _food;
         TodoItemDatabase _database;
+
+        [Obsolete]
         public ShopPageViewModel()
         {
             Title = "Shop";
             _database = new TodoItemDatabase();
             DeleteTable();
             GetItems();
-            //SaveItems();
-            //ComNuovo = new Command(
-            //    execute: () =>
-            //    {
-            //        this.SaveItems();
-            //    });
             ComUp = new Command(
                 execute: () =>
                 {
-                    //this.DeleteTable();
-                    this.GetItems();
+                    GetItems();
+                });
+            GoToDetailsCommand = new Command(
+                execute: (object food) =>
+                {
+                    //Food food = new Food { Nome = "Ciao", Descrizione = "descrizione" };
+                    System.Diagnostics.Debug.Print((food as Food).Nome);
+                    GoToDetailsAsync(food as Food);
                 });
         }
 
-        //public ICommand ComNuovo { get; private set; }
         public ICommand ComUp { get; private set; }
+        public ICommand GoToDetailsCommand { get; private set; }
+
+        [Obsolete]
+        void GoToDetailsAsync(Food food)
+        {
+            Device.BeginInvokeOnMainThread(async () =>
+
+            await Shell.Current.GoToAsync($"{nameof(DetailsPage)}", true, new Dictionary<string, object>
+            {
+                {"Food", food }
+            }));
+
+        }
+
+
         public void DeleteTable()
         {
             _database.DeleteTableAsync();
             //System.Diagnostics.Debug.Print("OKO");
         }
+
         async void GetItems()
         {
             Food = await _database.GetItemsAsync();

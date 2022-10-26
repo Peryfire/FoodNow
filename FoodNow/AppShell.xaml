@@ -10,17 +10,20 @@
         <Tab Title="Home" Icon="home_icon.png">
             <ShellContent
             Title="Home"
-            ContentTemplate="{DataTemplate view:HomePage}" />
+            ContentTemplate="{DataTemplate view:HomePage}"
+            Route="HomePage" />
         </Tab>
         <Tab Title="Shop" Icon="shop_icon.png">
             <ShellContent
             Title="Shop"
-            ContentTemplate="{DataTemplate view:ShopPage}" />
+            ContentTemplate="{DataTemplate view:ShopPage}"
+            Route="ShopPage" />
         </Tab>
         <Tab Title="Settings" Icon="settings_icon.png">
             <ShellContent
             Title="Settings"
-            ContentTemplate="{DataTemplate view:SettingsPage}" />
+            ContentTemplate="{DataTemplate view:SettingsPage}"
+            Route="SettingsPage" />
         </Tab>
         <Tab Title="info" Icon="info_icon.png">
             <ShellContent
