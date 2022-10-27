@@ -2,11 +2,25 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="FoodNow.View.InfoPage"
+             xmlns:viewmodel="clr-namespace:FoodNow.ViewModel"
              Title="{Binding Title}">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to Info"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+
+    <ScrollView>
+        <StackLayout Margin="20">
+            <Label Text="{Binding Text}"
+                   HorizontalOptions="Center"
+                   Padding="10"     
+                   FontSize="20"
+                   FontAttributes="Bold" />
+            <Border Padding="0,0"
+                    Margin="0,20,0,0"
+                    HorizontalOptions="Center"
+                    BackgroundColor="{AppThemeBinding Light={StaticResource Secondary}, Dark={StaticResource Gray950}}">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="10,10,10,10" />
+                </Border.StrokeShape>
+                <Image Source="{Binding Image}"/>
+            </Border>
+        </StackLayout>
+    </ScrollView>
 </ContentPage>

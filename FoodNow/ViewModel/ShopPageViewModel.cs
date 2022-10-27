@@ -2,14 +2,11 @@
 using FoodNow.Model;
 using FoodNow.View;
 using System.Collections.ObjectModel;
-using System.Collections.Specialized;
 using System.ComponentModel;
-using System.Diagnostics;
 using System.Windows.Input;
 
 namespace FoodNow.ViewModel
 {
-    //[QueryProperty("Item", "Item")]
     public class ShopPageViewModel : INotifyPropertyChanged
     {
         string _title;
@@ -31,8 +28,6 @@ namespace FoodNow.ViewModel
             GoToDetailsCommand = new Command(
                 execute: (object food) =>
                 {
-                    //Food food = new Food { Nome = "Ciao", Descrizione = "descrizione" };
-                    System.Diagnostics.Debug.Print((food as Food).Nome);
                     GoToDetailsAsync(food as Food);
                 });
         }
@@ -51,7 +46,6 @@ namespace FoodNow.ViewModel
             }));
 
         }
-
 
         public void DeleteTable()
         {
@@ -74,6 +68,7 @@ namespace FoodNow.ViewModel
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Title"));
             }
         }
+
         public ObservableCollection<Food> Food
         {
             get { return _food; }

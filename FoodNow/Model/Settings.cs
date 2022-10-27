@@ -4,9 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FoodNow.Services
+namespace FoodNow.Model
 {
-    internal class SweetService
+    public class Settings
     {
+        public string Nome { get; set; }
+        public string Immagine { get; set; }
     }
 }

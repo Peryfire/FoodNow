@@ -7,6 +7,7 @@ namespace FoodNow.Data
     public class TodoItemDatabase
     {
         SQLiteAsyncConnection Database;
+
         public TodoItemDatabase()
         {
 
@@ -33,11 +34,8 @@ namespace FoodNow.Data
                 await Database.InsertAsync(new Food() { Nome = "Torta", Descrizione = "Torta di mele", Tipo = "Dolce", Immagine = "torta.png", Prezzo = 12.0 });
             }
 
-            //var stream = await FileSystem.OpenAppPackageFileAsync(Path.Combine(FileSystem.AppDataDirectory, Constants.DatabaseFilename));
-            //System.Diagnostics.Debug.Print(Convert.ToString(File.Exists(Path.Combine(FileSystem.AppDataDirectory, Constants.DatabaseFilename))));
-            //string path = @"foodnow.db3";
-            //Database = new SQLiteAsyncConnection(path, Constants.Flags);
         }
+
         public async Task<ObservableCollection<Food>> GetItemsAsync()
         {
             await Init();
@@ -71,7 +69,6 @@ namespace FoodNow.Data
             return await Database.Table<Food>().Where(i => i.Nome == nome).FirstOrDefaultAsync();
         }
 
-
         public async Task<int> SaveItemAsync(Food item)
         {
             await Init();
@@ -81,7 +78,6 @@ namespace FoodNow.Data
 
             return await Database.InsertAsync(item);
         }
-
 
         // Elimina l'oggetto dal database utilizando la primary key fornita
         // restituisce un intero (il numero della riga eliminata)

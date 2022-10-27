@@ -10,7 +10,6 @@
         <VerticalStackLayout>
             <Grid ColumnDefinitions="*,Auto,*" RowDefinitions="160, Auto">
                 <BoxView
-                    
                     Grid.ColumnSpan="3"
                     HeightRequest="160"
                     HorizontalOptions="FillAndExpand" />
@@ -34,12 +33,39 @@
                 </Frame>
             </Grid>
             <VerticalStackLayout Padding="10" Spacing="10">
-                <Label FontSize="16" Text="{Binding Food.Nome, StringFormat='Nome: {0}'}" />
-                <Label FontSize="16" Text="{Binding Food.Descrizione, StringFormat='Descrizione: {0}'}" />
-                <Label FontSize="16" Text="{Binding Food.Tipo, StringFormat='Tipo: {0}'}" />
-                <Label FontSize="16" Text="{Binding Food.Prezzo, StringFormat='Prezzo: {0}'}" />
+                <Label>
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Nome: " FontSize="18" FontAttributes="Bold"/>
+                            <Span Text="{Binding Food.Nome}" FontSize="16" />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <Label>
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Descrizione: " FontSize="18" FontAttributes="Bold"/>
+                            <Span Text="{Binding Food.Descrizione}" FontSize="16" />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <Label>
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Tipo: " FontSize="18" FontAttributes="Bold"/>
+                            <Span Text="{Binding Food.Tipo}" FontSize="16" />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <Label>
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Prezzo: " FontSize="18" FontAttributes="Bold"/>
+                            <Span Text="{Binding Food.Prezzo, StringFormat='{0}€'}" FontSize="16" />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
             </VerticalStackLayout>
         </VerticalStackLayout>
     </ScrollView>
-
 </ContentPage>

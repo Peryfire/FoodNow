@@ -44,14 +44,9 @@
                 </CollectionView>
             </Grid>
             <!--<Button
-                Text="Nuovo"
-                Command="{Binding ComNuovo}"
-                VerticalOptions="End"/>-->
-            <Button
                 Text="Aggiorna"
                 Command="{Binding ComUp}"
-                VerticalOptions="End"/>
+                VerticalOptions="End"/>-->
         </StackLayout>
     </ScrollView>
-
 </ContentPage>

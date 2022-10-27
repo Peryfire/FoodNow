@@ -1,4 +1,3 @@
-using CommunityToolkit.Mvvm.ComponentModel;
 using FoodNow.Model;
 using FoodNow.ViewModel;
 

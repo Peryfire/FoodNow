@@ -4,18 +4,17 @@ using System.ComponentModel;
 
 namespace FoodNow.ViewModel
 {
-    
     public class DetailsViewModel : INotifyPropertyChanged
     {
-
         string _title;
-
         private Food _food;
+
         public DetailsViewModel()
         {
             Title = "Details";
             
         }
+
         public string Title
         {
             get { return _title; }
@@ -35,6 +34,7 @@ namespace FoodNow.ViewModel
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Food"));
             }
         }
+
         public event PropertyChangedEventHandler PropertyChanged;
     }
 }

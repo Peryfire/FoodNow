@@ -28,6 +28,7 @@ namespace FoodNow.ViewModel
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Title"));
             }
         }
+
         public string Text
         {
             get { return _text; }
@@ -37,6 +38,7 @@ namespace FoodNow.ViewModel
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Text"));
             }
         }
+
         public string Description
         {
             get { return _description; }

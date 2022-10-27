@@ -2,11 +2,51 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="FoodNow.View.SettingsPage"
+             xmlns:model="clr-namespace:FoodNow.Model"
+             xmlns:viewmodel="clr-namespace:FoodNow.ViewModel"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:DataType="viewmodel:SettingsPageViewModel"
              Title="{Binding Title}">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to Settings"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+
+    <ScrollView>
+        <StackLayout>
+            <Grid ColumnDefinitions="*,*"
+                  ColumnSpacing="5"
+                  RowDefinitions="*,Auto"
+                  RowSpacing="0">
+                <CollectionView
+                            Grid.ColumnSpan="2"
+                            ItemsSource="{Binding Setting}"
+                            SelectionMode="None">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="model:Settings">
+                            <Grid Padding="5">
+                                <Frame HeightRequest="50" Padding="0"
+                                       BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Gray950}}" >
+                                    <Frame.GestureRecognizers>
+                                        <TapGestureRecognizer CommandParameter="{Binding .}"
+                                                              Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:SettingsPageViewModel}},Path=GoToInfoCommand}"/>
+                                    </Frame.GestureRecognizers>
+                                    <Grid Padding="0" ColumnDefinitions="50,*">
+                                        <Image Aspect="AspectFill" Source="{Binding Immagine}"
+                                               WidthRequest="30"
+                                               HeightRequest="30">
+                                            <Image.Behaviors>
+                                                <toolkit:IconTintColorBehavior TintColor="{StaticResource Secondary}"/>
+                                            </Image.Behaviors>
+                                        </Image>
+                                        <VerticalStackLayout VerticalOptions="Center"
+                                                             Grid.Column="1"
+                                                             Padding="10">
+                                            <Label Text="{Binding Nome}" FontAttributes="Bold" FontSize="16" />
+                                        </VerticalStackLayout>
+                                    </Grid>
+                                </Frame>
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </Grid>
+        </StackLayout>
+    </ScrollView>
 </ContentPage>

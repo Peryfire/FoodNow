@@ -25,11 +25,5 @@
             ContentTemplate="{DataTemplate view:SettingsPage}"
             Route="SettingsPage" />
         </Tab>
-        <Tab Title="info" Icon="info_icon.png">
-            <ShellContent
-            Title="Info"
-            ContentTemplate="{DataTemplate view:InfoPage}" />
-        </Tab>
     </TabBar>
-
 </Shell>
