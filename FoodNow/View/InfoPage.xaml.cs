@@ -1,3 +1,4 @@
+using FoodNow.Model;
 using FoodNow.ViewModel;
 
 namespace FoodNow.View;

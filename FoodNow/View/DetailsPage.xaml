@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FoodNow.View.DetailsPage"
+             xmlns:viewmodel="clr-namespace:FoodNow.ViewModel"
+             x:DataType="viewmodel:DetailsViewModel"
+             Title="{Binding Food.Nome}">
+
+    <ScrollView>
+        <VerticalStackLayout>
+            <Grid ColumnDefinitions="*,Auto,*" RowDefinitions="160, Auto">
+                <BoxView
+                    Grid.ColumnSpan="3"
+                    HeightRequest="160"
+                    HorizontalOptions="FillAndExpand" />
+                <Frame
+                    Grid.RowSpan="2"
+                    Grid.Column="1"
+                    Margin="0,80,0,0"
+                    HeightRequest="160"
+                    WidthRequest="160"
+                    HorizontalOptions="Center"
+                    Padding="0"
+                    IsClippedToBounds="True"
+                    CornerRadius="80">
+                    <Image
+                        Aspect="AspectFill"
+                        HeightRequest="160"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        Source="{Binding Food.Immagine}"
+                        WidthRequest="160"/>
+                </Frame>
+            </Grid>
+            <VerticalStackLayout Padding="10" Spacing="10">
+                <Label>
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Nome: " FontSize="18" FontAttributes="Bold"/>
+                            <Span Text="{Binding Food.Nome}" FontSize="16" />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <Label>
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Descrizione: " FontSize="18" FontAttributes="Bold"/>
+                            <Span Text="{Binding Food.Descrizione}" FontSize="16" />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <Label>
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Tipo: " FontSize="18" FontAttributes="Bold"/>
+                            <Span Text="{Binding Food.Tipo}" FontSize="16" />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <Label>
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Prezzo: " FontSize="18" FontAttributes="Bold"/>
+                            <Span Text="{Binding Food.Prezzo, StringFormat='{0}€'}" FontSize="16" />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+            </VerticalStackLayout>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
